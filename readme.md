@@ -115,7 +115,7 @@ Opcionalmente pode adicionar o `:watch` e `:coverage`.
 
 Para configurar parâmetros do jest deve-se criar um arquivo chamado `jest.config.js`.
 
-Na nomeação dos arquivos de testes existe algumas convenções. Os arquivos podem estar dentro de uma pasta chamada `test` ou dentro da pasta de origem do arquivo
+Na nomeação dos arquivos de testes existe algumas convenções. Os arquivos podem estar dentro de uma pasta chamada `test` ou `_test_` ou dentro da pasta de origem do arquivo
 a ser testado.
 
 >Se você deseja escrever um teste unitário para cobrir, por exemplo, um arquivo `editorasController.js`, o arquivo de teste deve ser especificado com o sufixo  `editorasController.test.js` ou `editorasController.spec.js`, pois é uma convenção de mercado. Há ainda quem prefira especificar o tipo de teste com `nomeDoArquivo.unit.test.js` e `nomeDoArquivo.int.test.js` para informar se o teste é unitário ou de integração. Todas estas formas são reconhecidas pelo Jest.

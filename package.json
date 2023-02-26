@@ -1,0 +1,20 @@
+{
+  "name": "testes",
+  "version": "1.0.0",
+  "description": "Conteúdo:\r - Conceitos e fundamentos de testes;\r - O que é a cultura de testes;\r - testes estáticos e unitários;\r - asserções;\r - frameworks de testes jest;\r - testes de integração com supertest.",
+  "main": "index.js",
+  "scripts": {
+    "test": "node --experimental-vm-modules node_modules/jest/bin/jest.js",
+    "test:watch": "node --experimental-vm-modules node_modules/jest/bin/jest.js --detectOpenHandles --watch",
+    "test:coverage": "node --experimental-vm-modules node_modules/jest/bin/jest.js --detectOpenHandles --coverage"
+  },
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "eslint": "^8.34.0",
+    "eslint-config-airbnb-base": "^15.0.0",
+    "eslint-plugin-import": "^2.27.5",
+    "jest": "^29.4.3"
+  },
+  "type": "module"
+}

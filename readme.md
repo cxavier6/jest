@@ -93,7 +93,7 @@ Installing eslint-config-airbnb-base@latest, eslint@^7.32.0 || ^8.2.0, eslint-pl
 
 Execução: `npx eslint <nome do arquivo>`
 
-### Jest 
+## Jest 
 
 Framework de testes em javascript. É utilizado como uma dependência de desenvolvimento.
 

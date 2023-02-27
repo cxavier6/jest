@@ -113,3 +113,11 @@ Para executar o comando de teste: `npm run test` ou `npm test`
 Opcionalmente pode adicionar o `:watch` e `:coverage`.
 
 Para configurar parâmetros do jest deve-se criar um arquivo chamado `jest.config.js`.
+
+#### Watch e Coverage
+
+O modo watch acompanha simultaneamente os arquivos de testes, de modo que ao realizar alterações e salvar os testes são executados novamente em tempo real. 
+
+image.png
+
+O modo coverage gera um relatório dos testes com mais informações.

@@ -150,3 +150,45 @@ de forma mais simples de navegar e com a possibilidade de visualizar os arquivos
 
 ![image](https://user-images.githubusercontent.com/79461028/221585506-2e14fcb2-2a45-4ee4-b511-aa3b98c66684.png)
 
+### Matchers
+
+O jest usa matchers para testar valores de maneiras diferentes.
+
+```javascript
+test('dois mais dois é quatro', () => {
+  expect(2 + 2).toBe(4);
+});
+```
+Nesse código, o `.toBe(4)` é o "matcher".
+
+**Mais exemplos de matchers:**
+
+| Método | Descrição |
+   |---|---|
+   | `expect(value)` | Testar um valor. |
+| `expect.extend(matchers)	` | Adicionar seus próprios "matchers". |
+| `expect.anything()` | Corresponde a qualquer coisa menos null e Undefined |
+| `expect.any(constructor)` | Testa qualquer coisa que é criada com um construtor. |
+| `expect.arrayContaining(array)` | O array esperado é um subconjunto do array recebido. |
+| `expect.assertions(número)` | Verifica que um certo número de verificações são chamadas durante um teste. |
+| `expect.closeTo(number, numDigits?)` | é útil quando você compara números quebrados num array. |
+| `expect.hasAssertions()` | Verifica que pelo menos uma verificação é chamada durante um teste. |
+| `expect.not.arrayContaining(array)` | Quando o array esperado não é um subconjunto do array recebido. |
+| `expect.not.objectContaining(object)` | Quando o objeto esperado não é um subconjunto do objeto recebido. |
+| `expect.not.stringContaining(string)` | Quando o valor recebido não é uma String ou não corresponde ao valor esperado da String. |
+| `expect.not.stringMatching(string / regexp)` | Quando o valor recebido não é String ou não corresponde a String esperada ou a expressão regular. |
+| `expect.objectContaining(object)` | Corresponde a qualquer objeto recebido que recursivamente coincide com as propriedades esperadas. |
+| `expect.stringContaining(string)` | Quando o valor recebido é uma String que contém a String esperada. |
+| `expect.stringMatching(string / regexp)` | Quando o valor recebido é uma String que contém a String ou expressão regular esperada. |
+| `expect.addSnapshotSerializer(serializer)` | Para adicionar um módulo que formata estruturas de dados específicas da aplicação. |
+| `.not` | Se você sabe como testar algo, .not permite que você teste seu oposto. |
+| `.resolves` | Decodifica o valor de uma promessa cumprida, para que qualquer outro matcher possa então ser encadeado. |
+| `.rejects` | Decodifica o motivo de uma promessa rejeitada, para que qualquer outro matcher possa ser encadeado. |
+
+## Documentação
+
+- [ESLint](https://eslint.org/docs/latest/)
+- [Jest](https://archive.jestjs.io/docs/pt-br/getting-started)
+  - [Matchers](https://archive.jestjs.io/docs/pt-br/22.x/using-matchers)
+  - [Expect](https://jestjs.io/pt-BR/docs/expect)
+  

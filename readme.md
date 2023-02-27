@@ -1,6 +1,6 @@
-#Testes unitários e de integração no Node.js com Jest
+# Testes unitários e de integração no Node.js com Jest
 
-Conteúdo:
+**Conteúdo**:
 - Conceitos e fundamentos de testes;
 - O que é a cultura de testes;
 - testes estáticos e unitários;
@@ -8,53 +8,53 @@ Conteúdo:
 - frameworks de testes jest;
 - testes de integração com supertest.
 
-##Tipos de testes
+## Tipos de testes
 
 Os testes são importantes para evitar descobrir erros durante o runtime ou tempo de execução.
 
-###Pirâmide de testes
+### Pirâmide de testes
 
-E2E(end-to-end) = topo da pirâmide, testa a aplicação de ponta a ponta
-Integração = testes de integração entre as partes do projeto
-Unitários = base da pirâmide, menores componentes testados individualmente
+- **E2E(end-to-end):** topo da pirâmide, testa a aplicação de ponta a ponta
+- **Integração:** testes de integração entre as partes do projeto
+- **Unitários:** base da pirâmide, menores componentes testados individualmente
 
 Quanto mais ao topo da pirâmide mais integração, maior consumo de recursos e mais complexo e devagar.
 Quanto mais a base da pirâmide mais isolado, maior volume de testes e mais simples e rápido.
 
-**Testes unitários**
+#### Testes unitários
 
-- Testes curtos e isolados;
-- Análise de funções ou métodos;
-- Não garante uma integração de módulos.
+- [X] Testes curtos e isolados;
+- [X] Análise de funções ou métodos;
+- [ ] Não garante uma integração de módulos.
 
 Exemplo: testar a função que calcula as taxas de um método de pagamento.
 
-**Testes de integração**
+#### Testes de integração
 
-- Testes de rotas e requisições;
-- Comunicação dos módulos.
-- Não analisa todo o fluxo da aplicação.
+- [X] Testes de rotas e requisições;
+- [X] Comunicação dos módulos.
+- [ ] Não analisa todo o fluxo da aplicação.
 
 Exemplo: testar a requisição das rotas de uma API.
 
-**Testes E2E (end-to-end)**
+#### Testes E2E (end-to-end)
 
-- Ponta a ponta, alto nível;
-- Testes longos e completos;
-- Análise de todos os módulos e stacks. Ex: front-end/banco de dados/microsserviços.
-- Tempo longo e custo alto;
-- Complexa estrutura de testes.
+- [X] Ponta a ponta, alto nível;
+- [X] Testes longos e completos;
+- [X] Análise de todos os módulos e stacks. Ex: front-end/banco de dados/microsserviços.
+- [ ] Tempo longo e custo alto;
+- [ ] Complexa estrutura de testes.
 
 Exemplo: testar uma aplicações web desde o cadastro, cliques e etc, ou seja, todas as funcionalidades.
 
-##Cultura de testes
+## Cultura de testes
 
 Um ambiente onde a equipe de desenvolvimento pode implementar e gerir os testes.
 
 Fatores fundamentais:
-- Qualidade;
-- Confiança;
-- Tempo.
+- [X] Qualidade;
+- [X] Confiança;
+- [X] Tempo.
 
 Fases do teste:
 - Análise de requisitos: identificar as funcionalidades que serão testadas;
@@ -63,15 +63,16 @@ Fases do teste:
 - Ambiente de teste: onde e como esses testes serão feitos;
 - Implementação: documentação dos resultados dos testes, detalhamentos dos problemas e melhorias.
 
-##Testes estáticos
+## Testes estáticos
 
 Para analisar o código sem necessariamente executá-lo, verificando se algumas boas práticas e formatação padronizada foram adotadas na implementação.
 
-##ESLint
+### ESLint
 
 Para realizar os testes estáticos estabelecendo uma padronização do código e identificação de erros.
 
 Instalação: `npm install --save-dev eslint` 
+
 Configuração: `npx eslint` 
 
 ```
@@ -92,7 +93,7 @@ Installing eslint-config-airbnb-base@latest, eslint@^7.32.0 || ^8.2.0, eslint-pl
 
 Execução: `npx eslint <nome do arquivo>`
 
-##Jest 
+## Jest 
 
 Framework de testes em javascript. É utilizado como uma dependência de desenvolvimento.
 
@@ -113,6 +114,11 @@ Para executar o comando de teste: `npm run test` ou `npm test`
 Opcionalmente pode adicionar o `:watch` e `:coverage`.
 
 Para configurar parâmetros do jest deve-se criar um arquivo chamado `jest.config.js`.
+
+Na nomeação dos arquivos de testes existe algumas convenções. Os arquivos podem estar dentro de uma pasta chamada `test` ou `_test_` ou dentro da pasta de origem do arquivo
+a ser testado.
+
+>Se você deseja escrever um teste unitário para cobrir, por exemplo, um arquivo `editorasController.js`, o arquivo de teste deve ser especificado com o sufixo  `editorasController.test.js` ou `editorasController.spec.js`, pois é uma convenção de mercado. Há ainda quem prefira especificar o tipo de teste com `nomeDoArquivo.unit.test.js` e `nomeDoArquivo.int.test.js` para informar se o teste é unitário ou de integração. Todas estas formas são reconhecidas pelo Jest.
 
 #### Watch e Coverage
 

@@ -120,10 +120,33 @@ a ser testado.
 
 >Se você deseja escrever um teste unitário para cobrir, por exemplo, um arquivo `editorasController.js`, o arquivo de teste deve ser especificado com o sufixo  `editorasController.test.js` ou `editorasController.spec.js`, pois é uma convenção de mercado. Há ainda quem prefira especificar o tipo de teste com `nomeDoArquivo.unit.test.js` e `nomeDoArquivo.int.test.js` para informar se o teste é unitário ou de integração. Todas estas formas são reconhecidas pelo Jest.
 
-#### Watch e Coverage
+### Watch e Coverage
 
-O modo watch acompanha simultaneamente os arquivos de testes, de modo que ao realizar alterações e salvar os testes são executados novamente em tempo real. 
+#### watch
 
-image.png
+O modo watch acompanha simultaneamente os arquivos de testes, de modo que ao realizar alterações e salvar, os testes são executados novamente em tempo real. 
+
+Execução: `npm run test:watch`
+
+![image](https://user-images.githubusercontent.com/79461028/221580892-a33585e4-bd28-48b2-a844-234f5ff90262.png)
+
+#### coverage
 
 O modo coverage gera um relatório dos testes com mais informações.
+
+Execução: `npm run test:coverage`
+
+![image](https://user-images.githubusercontent.com/79461028/221581438-1da65d51-a1dc-4c53-8db9-d2ff31725c86.png)
+
+| Parâmetro | Descrição |
+   |---|---|
+   | `% Stmts` | São statements, ou afirmações, em percentual, que foram percorridas. |
+| `% Branch` | São as bifurcações de condicionais ou laços de repetição. |
+| `% Func` | Quais funções foram chamadas dentro daquela base de códigos. |
+| `% Lines` | Percentual de linhas que foram percorridas. |
+
+Dentro do projeto é criada uma pasta chamada `coverage` onde nela dentro da pasta `lcov-report` há um arquivo html que mostra as mesmas informações da tabela, mas
+de forma mais simples de navegar e com a possibilidade de visualizar os arquivos.
+
+![image](https://user-images.githubusercontent.com/79461028/221585506-2e14fcb2-2a45-4ee4-b511-aa3b98c66684.png)
+

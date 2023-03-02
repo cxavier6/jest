@@ -1,4 +1,4 @@
-/* eslint-disable no-console *//* eslint-disable linebreak-style */
+/* eslint-disable no-console */
 import assert from 'node:assert/strict';
 
 const compare = assert.strictEqual(1, 2);

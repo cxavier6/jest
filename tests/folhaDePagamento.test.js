@@ -1,6 +1,5 @@
-/* eslint-disable linebreak-style */
 /* eslint-disable import/extensions *//* eslint-disable no-undef */
-/* eslint-disable linebreak-style */
+
 import { overtime, calculateDiscounts } from '../index.js';
 
 describe('Overtime amount tests', () => {

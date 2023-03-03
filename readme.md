@@ -240,10 +240,46 @@ describe('Testando o modelo Editora', () => {
 
 O método `.skip` é utilizado para pular um teste espcífico ao executar os testes. 
 
+#### Mock de funções
+
+Quando os testes são executados o ideal é que não sejam criados novos registros no banco de dados utilizado em produção, e sim que exista um ambiente de desenvolvimento de testes para que os testes possam ser desenvolvidos sem conflitos e alteração no banco de dados.
+
+O jest fornece um mock de funções através do método `jest.fn()`. Para utilizar deve importar o jest do pacote `@jest/globals`.
+
+```javascript
+  import { jest } from '@jest/globals';
+
+  it('Deve fazer uma chamada simulada ao BD', () => {
+    const editora = new Editora(objetoEditora);
+
+    editora.salvar = jest.fn().mockReturnValue({
+      id: 10,
+      nome: 'CDC',
+      cidade: 'Sao Paulo',
+      email: 'c@c.com',
+      created_at: '2022-10-01',
+      updated_at: '2022-10-01',
+    });
+
+    const retorno = editora.salvar();
+
+    expect(retorno).toEqual(
+      expect.objectContaining({
+        id: expect.any(Number),
+        ...objetoEditora,
+        created_at: expect.any(String),
+        updated_at: expect.any(String),
+      }),
+    );
+  });
+});
+```
+
 ## Documentação
 
 - [ESLint](https://eslint.org/docs/latest/)
 - [Jest](https://archive.jestjs.io/docs/pt-br/getting-started)
   - [Matchers](https://archive.jestjs.io/docs/pt-br/22.x/using-matchers)
   - [Expect](https://jestjs.io/pt-BR/docs/expect)
+  - [Mock Functions](https://archive.jestjs.io/docs/pt-br/22.x/mock-functions)
   

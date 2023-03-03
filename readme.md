@@ -185,7 +185,7 @@ Nesse código, o `.toBe(4)` é o "matcher".
 | `.resolves` | Decodifica o valor de uma promessa cumprida, para que qualquer outro matcher possa então ser encadeado. |
 | `.rejects` | Decodifica o motivo de uma promessa rejeitada, para que qualquer outro matcher possa ser encadeado. |
 
-## Testando APIs
+### Testando APIs
 
 Ao testar uma API é importante ter a separação do `app.js` e do `server.js` para que os testes consigam ser executados corretamente.
 
@@ -274,6 +274,66 @@ O jest fornece um mock de funções através do método `jest.fn()`. Para utiliz
   });
 });
 ```
+#### Ambiente de testes
+
+O **ambiente de testes** serve para verificar todos os componentes de um sistema nas condições mais próximas possíveis das condições de uso real pelos usuários, para que possíveis bugs e erros de implementação possam ser corrigidos antes que o programa ou funcionalidade seja disponibilizado - o tal “ambiente de produção”.
+
+Diferente do **ambiente de desenvolvimento** que é onde a aplicação é desenvolvida - a partir do zero, novas funcionalidades ou atualizações - e onde já podem ser feitos testes unitários e de integração, o ambiente de testes é onde são feitos os testes mais complexos e que levam mais tempo para serem implementados, como testar a integração com outras partes do sistema, comportamento com o banco, performance das tarefas, etc. Normalmente os QAs(ou testers) são responsáveis por isso.
+
+#### Hooks
+
+Hooks são utilizados quando queremos dar ao programa um comportamento específico em alguma determinada circunstância - por exemplo, antes, durante ou depois de determinado código ser executado.
+
+>Muitas vezes ao escrever testes você tem algum trabalho de configuração que precisa acontecer antes de executar testes, e você tem algum trabalho de acabamento que precisa acontecer após os testes executarem. Jest fornece funções de auxilio para lidar com isso.
+
+Exemplo com `beforeEach()` e `afterEach()` que são utilizados para executar algo antes e depois de cada teste respectivamente.
+
+```javascript
+beforeEach(() => {
+  initializeCityDatabase();
+});
+
+afterEach(() => {
+  clearCityDatabase();
+});
+
+test('city database has Vienna', () => {
+  expect(isCity('Vienna')).toBeTruthy();
+});
+
+test('city database has San Juan', () => {
+  expect(isCity('San Juan')).toBeTruthy();
+});
+```
+### Testes de integração
+
+Testes de integração são responsáveis por testar a integração entre dois módulos - ou partes - diferentes da aplicação. Testar os endpoints de uma API é um tipo de teste de integração.
+
+#### Supertest
+
+Faz asserções HTTP facilitando o teste de rotas de uma API REST. É instalada como uma dependência de desenvolvimento com o comando `npm install --save-dev supertest`.
+
+Para utilizar deve-se importar o `request` no arquivo de teste. Com a sintaxe de módulos do ES6+: 
+
+```javascript
+import request from 'supertest';
+```
+Exemplo rota GET:
+
+```javascript
+describe('GET em /editoras', () => {
+    it('Deve retornar uma lista de editoras', async () => {
+        const resposta = await request(app)
+            .get('/editoras')
+            .set('Accept', 'application/json')
+            .expect('content-type', /json/)
+            .expect(200);
+
+        expect(resposta.body[0].email).toEqual('e@e.com');
+    });
+});
+```
+
 
 ## Documentação
 
@@ -282,4 +342,6 @@ O jest fornece um mock de funções através do método `jest.fn()`. Para utiliz
   - [Matchers](https://archive.jestjs.io/docs/pt-br/22.x/using-matchers)
   - [Expect](https://jestjs.io/pt-BR/docs/expect)
   - [Mock Functions](https://archive.jestjs.io/docs/pt-br/22.x/mock-functions)
+  - [Hooks](https://jestjs.io/pt-BR/docs/setup-teardown#repeating-setup)
+- [Supertest](https://www.npmjs.com/package/supertest)
   

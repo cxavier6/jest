@@ -15,3 +15,17 @@ describe('Teste dos itens', () => {
         expect(item.pegaValorTotalItem()).toBeCloseTo(0.3);
     });
 });
+
+describe('Inicializando itens', () => {
+    test.each([
+      ['uva', 3.40, 4],
+      ['maçã', 2.50, 1],
+      ['laranja', 3.10, 2],
+    ])('Deve adicionar frutas no carrinho', async (nome, valor, quantidade) => {
+      const item = new Item(nome, valor, quantidade);
+  
+      expect(item.nome).toBe(nome);
+      expect(item.valor).toBe(valor);
+      expect(item.quantidade).toBe(quantidade);
+    });
+  });

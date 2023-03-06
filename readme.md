@@ -359,6 +359,29 @@ Com a função `--verbose` do jest é possível receber a descrição de cada te
 
 ![image](https://user-images.githubusercontent.com/79461028/223125367-abefc7af-c7f5-4030-96e0-35a1922ba3e1.png)
 
+#### spyOn
+
+O método `jest.spyON` é uma função mock do Objeto Jest utilizada para obter mais informações sobre as chamadas de um determinado método. Exemplo: se o método está sendo chamado.
+
+```javascript
+describe('PUT em /editoras/id', () => {
+    test.each([ 
+        ['nome', { nome: 'Casa do Código' }],
+        ['cidade', { cidade: 'RJ' }],
+        ['email', { email: 'cdc@cdc.com '}],
+    ])('Deve alterar o campo %s', async (chave, params) => {  
+        const requisicao = { request };
+        const spy = jest.spyOn(requisicao, 'request')
+        await requisicao.request(app)
+        .put(`/editoras/${idResposta}`)
+        .send(params)
+        .expect(204);
+
+        expect(spy).toHaveBeenCalled();
+    });
+});
+```
+
 ## Documentação
 
 - [ESLint](https://eslint.org/docs/latest/)

@@ -333,7 +333,31 @@ describe('GET em /editoras', () => {
     });
 });
 ```
+#### .each
 
+Utilizando o método `.each` é possível realizar um "loop de testes" onde mais de um parâmetro é testado, ou seja, pega cada elemento do array e vai testar cada um separadamente. Na rota de PUT, por exemplo, podemos testar a atualização de mais de um campo. Exemplo:
+
+```javascript
+describe('PUT em /editoras/id', () => {
+    test.each([ 
+        ['nome', { nome: 'Casa do Código' }],
+        ['cidade', { cidade: 'RJ' }],
+        ['email', { email: 'cdc@cdc.com '}],
+    ])('Deve alterar o campo %s', async (chave, params) => {
+        await request(app)
+        .put(`/editoras/${idResposta}`)
+        .send(params)
+        .expect(204);
+    });
+});
+```
+Os objetos com os campos que serão atualizado são passados como parâmetros na função de teste como `params` e a string antes dos objetos, que indicam os nomes dos testes, é passada como parâmetro `chave` e o `%s` (indicado na documentação do Supertest) na descrição do teste.
+
+#### --verbose
+
+Com a função `--verbose` do jest é possível receber a descrição de cada teste executado.
+
+![image](https://user-images.githubusercontent.com/79461028/223125367-abefc7af-c7f5-4030-96e0-35a1922ba3e1.png)
 
 ## Documentação
 
